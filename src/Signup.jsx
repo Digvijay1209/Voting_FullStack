@@ -35,7 +35,7 @@ export default function Signup() {
     console.log('Signup data:', formData);
 
     try {
-      const response = await fetch('https://voting-back.vercel.app/user/signup', {
+      const response = await fetch('https://voting-back-6.onrender.com/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
