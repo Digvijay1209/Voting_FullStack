@@ -16,11 +16,29 @@ const VotingPageAdmin = () => {
  
   useEffect(() => {
     const fetchCandidates = async () => {
+      const token = localStorage.getItem('token'); // Retrieve the token from local storage
+      if (!token) {
+        console.error('Token not found in localStorage');
+        return; // Early return if the token is not found
+      }
+  
       try {
-        const response = await fetch(baseUrl);
+        const response = await fetch(baseUrl, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the header
+          },
+        });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Error fetching candidates:', errorData.error); // Log the error message from the response
+          return; // Exit if there's an error
+        }
+  
         const data = await response.json();
         console.log('Fetched candidates:', data); 
-     
+  
         const candidatesArray = Array.isArray(data) ? data : data ? [data] : [];
         setCandidates(candidatesArray);
       } catch (err) {
@@ -29,6 +47,7 @@ const VotingPageAdmin = () => {
     };
     fetchCandidates();
   }, [refresh]); // Trigger re-fetch when `refresh` changes
+  
 
   const handleChange = (e) => {
     setFormData({
