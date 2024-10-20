@@ -11,7 +11,7 @@ const VotingPageAdmin = () => {
   const [editMode, setEditMode] = useState(false);
   const [selectedCandidateId, setSelectedCandidateId] = useState(null);
   const [refresh, setRefresh] = useState(false); // State variable to trigger re-fetch
-  const baseUrl = 'https://voting-backend-one.vercel.app//candidate';
+  const baseUrl = 'https://voting-back.vercel.app/candidate';
 
  
   useEffect(() => {
