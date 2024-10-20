@@ -19,13 +19,10 @@ const VotingPageAdmin = () => {
       try {
         const response = await fetch(baseUrl);
         const data = await response.json();
-        console.log('Fetched candidates:', data); // Debug log
-        if (Array.isArray(data)) {
-          setCandidates(data);
-        } else {
-          console.error('Expected an array, but got:', data);
-          setCandidates([]); 
-        }
+        console.log('Fetched candidates:', data); 
+     
+        const candidatesArray = Array.isArray(data) ? data : data ? [data] : [];
+        setCandidates(candidatesArray);
       } catch (err) {
         console.error('Error fetching candidates:', err);
       }
