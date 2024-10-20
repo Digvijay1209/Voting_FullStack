@@ -33,7 +33,7 @@ export default function VotingPage() {
 
   const fetchCandidates = async () => {
     try {
-      const response = await fetch('http://localhost:3000/candidate', {
+      const response = await fetch('https://voting-backend-one.vercel.app//candidate', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -54,7 +54,7 @@ export default function VotingPage() {
   };
   const fetchVoteCounts = async () => {
     try {
-      const response = await fetch('http://localhost:3000/candidate/vote/count', {
+      const response = await fetch('https://voting-backend-one.vercel.app//candidate/vote/count', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -83,7 +83,7 @@ export default function VotingPage() {
   };
   const fetchUserProfile = async () => {
     try {
-      const response = await fetch('http://localhost:3000/user/profile', {
+      const response = await fetch('https://voting-backend-one.vercel.app//user/profile', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -107,7 +107,7 @@ export default function VotingPage() {
   const handleVote = async (candidateId) => {
     try {
       console.log("Test :",candidateId);
-      const response = await fetch(`http://localhost:3000/candidate/vote/${candidateId}`, {
+      const response = await fetch(`https://voting-backend-one.vercel.app//candidate/vote/${candidateId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ export default function VotingPage() {
   const handlePasswordChange = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/user/profile/password', {
+      const response = await fetch('https://voting-backend-one.vercel.app//user/profile/password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
