@@ -46,7 +46,7 @@ export default function Signup() {
       const data = await response.json();
 
       if (response.ok) {
-        // Successful signup
+        
         toast({
           title: 'Signup successful.',
           description: 'Please login.',
@@ -56,7 +56,7 @@ export default function Signup() {
         });
         navigate('/login');
       } else {
-        // Handle errors from the backend
+      
         toast({
           title: 'Signup failed.',
           description: data.error || 'An error occurred. Please try again.',
@@ -93,14 +93,14 @@ export default function Signup() {
       background="white"
       borderRadius="8px"
       boxShadow="lg"
-      height="90%" // Adjust height to reduce overall size
-      overflowY="auto" // Allow internal scrolling if necessary
+      height="90%" 
+      overflowY="auto" 
     >
       <Heading as="h2" size="lg" textAlign="center" marginBottom="20px">
         Sign Up
       </Heading>
       <form onSubmit={handleSubmit}>
-        <VStack spacing={3}> {/* Adjusted spacing for a tighter layout */}
+        <VStack spacing={3}> {}
           <FormControl isRequired>
             <FormLabel>Name</FormLabel>
             <Input
@@ -185,7 +185,7 @@ export default function Signup() {
           <Button 
             colorScheme="gray" 
             width="full" 
-            marginTop="2" // Adjusted margin to fit better
+            marginTop="2" 
             onClick={() => navigate('/login')}
           >
             Already have an account? Login
