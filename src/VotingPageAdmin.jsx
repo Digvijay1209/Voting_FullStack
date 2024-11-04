@@ -10,30 +10,30 @@ const VotingPageAdmin = () => {
   });
   const [editMode, setEditMode] = useState(false);
   const [selectedCandidateId, setSelectedCandidateId] = useState(null);
-  const [refresh, setRefresh] = useState(false); // State variable to trigger re-fetch
+  const [refresh, setRefresh] = useState(false); 
   const baseUrl = 'https://voting-back-6.onrender.com/candidate';
 
  
   useEffect(() => {
     const fetchCandidates = async () => {
-      const token = localStorage.getItem('token'); // Retrieve the token from local storage
+      const token = localStorage.getItem('token'); 
       if (!token) {
         console.error('Token not found in localStorage');
-        return; // Early return if the token is not found
+        return; 
       }
   
       try {
         const response = await fetch(baseUrl, {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the header
+            Authorization: `Bearer ${token}`, 
           },
         });
   
         if (!response.ok) {
           const errorData = await response.json();
-          console.error('Error fetching candidates:', errorData.error); // Log the error message from the response
-          return; // Exit if there's an error
+          console.error('Error fetching candidates:', errorData.error); 
+          return; 
         }
   
         const data = await response.json();
@@ -46,7 +46,7 @@ const VotingPageAdmin = () => {
       }
     };
     fetchCandidates();
-  }, [refresh]); // Trigger re-fetch when `refresh` changes
+  }, [refresh]); 
   
 
   const handleChange = (e) => {
@@ -94,11 +94,11 @@ const VotingPageAdmin = () => {
         },
         body: JSON.stringify(formData),
       });
-      await response.json(); // Wait for the response
+      await response.json(); 
       setEditMode(false);
       setFormData({ name: '', party: '', age: '' });
       setSelectedCandidateId(null);
-      setRefresh(!refresh); // Toggle refresh state to trigger re-fetch
+      setRefresh(!refresh); 
     } catch (err) {
       console.error('Error updating candidate:', err);
     }
@@ -112,7 +112,7 @@ const VotingPageAdmin = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setRefresh(!refresh); // Toggle refresh state to trigger re-fetch
+      setRefresh(!refresh); 
     } catch (err) {
       console.error('Error deleting candidate:', err);
     }
