@@ -62,12 +62,12 @@ export default function VotingPage() {
   
       const data = await response.json();
   
-      // Check if data is an array before setting it
+      
       if (Array.isArray(data)) {
         console.log(data)
         setVoteCounts(data);
       } else {
-        setVoteCounts([]); // Set to an empty array if it's not in the expected format
+        setVoteCounts([]); 
       }
     } catch (error) {
       console.error('Error fetching vote counts:', error);
@@ -78,7 +78,7 @@ export default function VotingPage() {
         duration: 3000,
         isClosable: true,
       });
-      setVoteCounts([]); // In case of error, fallback to empty array
+      setVoteCounts([]); 
     }
   };
   const fetchUserProfile = async () => {
@@ -123,7 +123,7 @@ export default function VotingPage() {
           duration: 3000,
           isClosable: true,
         });
-        fetchVoteCounts(); // Refresh vote counts after voting
+        fetchVoteCounts(); 
       } else {
         const data = await response.json();
         toast({
